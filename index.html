@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Molly Phelan & Isaac Rothenbaum</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Parisienne" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+</head>
+<body>
+    <header>
+        <a id="logo" href="#">
+            <span>M</span><sub>&</sub><span>I</span>
+        </a>
+        <div>
+            <a href="#story">Our Story</a>
+            <a href="#details">Wedding Details</a>
+            <a href="#rsvp">RSVP</a>
+            <a href="#registry">Registry</a>
+        </div>
+    </header>
+    <div id="hero">
+
+    </div>
+
+    <div id="title-container">
+        <section>
+            <h1>Molly Phelan<span class="big-ampersand">&amp;</span>Isaac Rothenbaum</h1>
+        </section>
+    </div>
+
+    <a name="story"></a>
+    <div id="story-container">
+        <section>
+            <h2>Our Story</h2>
+            <ol>
+                <li>
+                    <h4>July 22nd, 2015</h4>
+                    <p>
+                        Molly and Isaac went on their first date.
+                        They met up for a drink at <a href="http://onieals.com/soho" class="link" target="_blank">Onieals</a>
+                    </p>
+                </li>
+                <li>
+                    <h4>September 24th, 2015</h4>
+                    <p>
+                        After a night out in Little Italy for the <a href="https://sangennaro.nyc/" class="link" target="_blank">San Gennaro festival</a>,
+                        the two officially became a couple; the kids call this "DTR" (Defining the relationship).
+                    </p>
+                </li>
+                <li>
+                    <h4>2015 - 2017</h4>
+                    <p>
+                        Birthday parties, date nights, concerts, holidays, homecomings and goodbye drinks with friends and family.
+                    </p>
+                </li>
+                <li>
+                    <h4>March 15th, 2017</h4>
+                    <p>
+                        Spending almost every moment together, Molly and Isaac decided to save some money and move in together.
+                        They found a cute little apartment in the Lower East Side with a balcony so they could watch dumplings
+                        being prepared across the street at their soon-to-be favorite dumpling spot,
+                        <a href="http://www.shujiaofuzhou.com/" class="link" target="_blank">Shu Jiao Fu Zhou</a>
+                    </p>
+                </li>
+                <li>
+                    <h4>November 2nd, 2018</h4>
+                    <p>
+                        After grabbing some dinner at a recently opened Thai restaurant, <a href="https://www.noreethaibazaar.com/" class="link" target="_blank">Noree Thai Bazaar</a>,
+                        The duo walked to nearby Onieals for a drink. On the way, huddled under their shared umbrella, they reminisced on the great times
+                        they've had together. Starting from July 22nd, 2015, they named the milestones in order until Isaac got down on one knee and said:
+                    </p>
+                    <p class="quote">
+                        ...And on November 2nd, 2018, we got engaged
+                    </p>
+                </li>
+                <li id="last-event">
+                    <p>We're excited to share many more milestones together</p>
+                </li>
+            </ol>
+        </section>
+    </div>
+
+    <a name="details"></a>
+    <div id="details-container">
+        <section>
+            <h2>Wedding Details</h2>
+        </section>
+    </div>
+
+    <a name="rsvp"></a>
+    <div id="rsvp-container">
+        <section>
+            <h2>RSVP</h2>
+            <form id="rsvp-form">
+                <div class="inline-desktop">
+                    <div class="input-container">
+                        <label>Your name</label>
+                        <input type="text" name="name" placeholder="First and Last Name">
+                    </div>
+                    <div class="input-container">
+                        <label>Email address</label>
+                        <input type="text" name="email" placeholder="Email you received invitation to">
+                    </div>
+                </div>
+                <div class="input-container" id="attending-input-container">
+                    <label>Will you be joining us?</label>
+                    <input type="radio" id="statusYes" name="attending" value="yes"><label for="statusYes">Yes</label>
+                    <input type="radio" id="statusNo" name="attending" value="no"><label for="statusNo">No</label>
+                    <div class="input-container">
+                        <label>Including yourself, how many are you RSVPing for?</label>
+                        <input type="number" step="1" value="1" name="total">
+                    </div>
+                </div>
+                <div class="input-container">
+                    <label>Questions? Comments?</label>
+                    <textarea name="comments" placeholder="Anything we forgot to mention? Got a burning question? Just want to say hi? Let us know!"></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <div id="rsvp-message-confirm" style="display:none;">
+                        ✔ We've received your RSVP. Thanks!
+                    </div>
+                    <div id="rsvp-message-error" style="display:none;">
+                        Please make sure you've completed all required fields to RSVP
+                    </div>
+                    <button id="submit-form">
+                        RSVP
+                    </button>
+                </div>
+            </form>
+        </sectioN>
+    </div>
+
+    <a name="registry"></a>
+    <div id="registry-container">
+        <section>
+            <h2>Registry</h2>
+            <p>
+                We so appreciate you traveling to our wedding, and your presence really is a gift to us. We're so excited to celebrate with you!
+            </p>
+            <p>
+                You may find our registry <a class="link" href="https://www.crateandbarrel.com/gift-registry/molly-phelan-and-isaac-rothenbaum/r5960113">here</a>
+            </p>
+
+            <p>
+                Our registry contains everything we can fit in our tiny Manhattan apartment.
+                Because we're limited on space, please also feel free to contribute to our future new home and honeymoon.
+                You can find our venmo/paypal/mailing address below.
+            </p>
+            <ul>
+                <li>
+                    <strong>Venmo:</strong>
+                    <a class="link" target="_blank" href="https://venmo.com/code?user_id=1237091266592768082">@irothenbaum</a>
+                </li>
+                <li>
+                    <strong>Paypal:</strong>
+                    <a class="link" target="_blank" href="https://paypal.me/irothenbaum?locale.x=en_US">isaac@rothenbaum.com</a>
+                </li>
+                <li style="display:flex; align-items: flex-start; justify-content: flex-start;">
+                    <strong>Home Address:</strong>
+                    <div>
+                        294 Broome Street, apt #3A<br>
+                        New York, New York, 10002
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

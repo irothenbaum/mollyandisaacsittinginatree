@@ -1,0 +1,432 @@
+@import "./variables";
+@import "./mixins";
+@import "./reset";
+
+@mixin section-container() {
+  border-top: 2px solid rgba(255,255,255,0.25);
+  border-bottom: 2px solid rgba(0,0,0,0.25);
+}
+
+@mixin heart-background($color) {
+  background: url('../img/heart.png') top left repeat $color;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  background-color: $darkGreen;
+  font-size: 16px;
+  color: $white;
+  font-family: 'Nunito', sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $beige;
+  z-index: 100;
+  box-shadow: 0 2px 6px -2px $black;
+  height: 3rem;
+  @include clear_fix;
+
+  a {
+    height: 100%;
+    padding: $spaceNormal $spaceLarge;
+    display: block;
+    transition: background-color $buttonTransitionTiming ease-out;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 0;
+      position: absolute;
+      left: 0;
+      bottom: $spaceSmall;
+      height: 2px;
+      background-color: $white;
+      margin-left: 50%;
+      transition: all $buttonTransitionTiming ease-out;
+    }
+
+    &:hover {
+      background-color: rgba(255,255,255,0.25);
+
+      &:after {
+        margin-left: $spaceLarge;
+        width: calc(100% - 3rem)
+      }
+    }
+  }
+
+  a#logo {
+    font-family: 'Parisienne', cursive;
+    font-size: 1.35rem;
+    padding: $spaceNormal;
+    float:left;
+    display: block;
+    margin-left: $spaceNormal;
+
+    span:last-child {
+      vertical-align: -0.1rem;
+      font-size: 1.5rem;
+    }
+
+    sub {
+      font-size: $fontSmall;
+    }
+  }
+
+  div {
+    width: 50%;
+    min-width: 20rem;
+    padding-right: $spaceHuge;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    float: right;
+  }
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+  font-family: 'Parisienne', cursive;
+}
+
+h1 {
+  font-size: $fontHuge;
+  text-shadow: 0 1px 1px $black, 0 1px 4px $white;
+  .big-ampersand {
+    text-shadow: 0 0 3px $black 0 0 6px $white;
+    font-size: 10rem;
+    opacity: 0.15;
+    height: 1rem;
+    line-height: 1rem;
+    display: block;
+  }
+}
+
+h2 {
+  font-size:$fontLarge;
+}
+
+#hero {
+  @include heart-background($grey5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
+  position: relative;
+
+  #blurred-image, #blurred-image-previous {
+    position: absolute;
+    @include fill_page();
+    top:0;
+    left:0;
+    background-size:cover;
+    background-position: center;
+    filter: blur(16px) grayscale(50%);
+    -webkit-filter: blur(16px) grayscale(50%);
+    z-index:2;
+  }
+
+  #featured-image, #featured-image-previous {
+    @include fill_page;
+    display: block;
+    position: relative;
+    z-index: 10;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  #featured-image-previous {
+    position: absolute;
+    z-index: 12;
+  }
+
+  #blurred-image-previous {
+    z-index:11;
+  }
+
+  #hero-nav {
+    position: absolute;
+    right: $spaceNormal;
+    z-index: 20;
+
+    li {
+      border-radius: 50%;
+      height: 0.65rem;
+      width: 0.65rem;
+      margin: $spaceNormal;
+      background: $white;
+      transition: all $buttonTransitionTiming ease-out;
+      @include hover_opacity();
+
+      &.selected {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:before {
+    display: block;
+    position: absolute;
+    z-index:2;
+    content: '';
+    background: linear-gradient(0.1turn, $black 0%, transparent 100%);
+    opacity: 0.5;
+    @include fill_page;
+    top:0;
+    left:0;
+  }
+}
+
+#title-container {
+  @include section-container();
+  @include heart-background($pattern2);
+  text-align: center;
+}
+
+#rsvp-message-confirm, #rsvp-message-error {
+  padding: $spaceNormal;
+  text-align: center;
+  border-radius: 4px;
+  font-size: $fontLarge;
+  color: $white;
+  background: $blue;
+  box-shadow: 0 0 6px -2px $black;
+}
+
+#rsvp-message-error {
+  background: $red;
+  margin-bottom: $spaceNormal;
+}
+
+#attending-input-container {
+  .input-container {
+    margin-top: $spaceNormal;
+    display: none;
+
+    input {
+      width: 4rem;
+      display: inline-block;
+    }
+  }
+
+  &.is-attending {
+    .input-container {
+      display: block;
+    }
+  }
+}
+
+
+section {
+  max-width: $largeScreen;
+  padding: $spaceNormal;
+  margin: $spaceHuge auto;
+
+  h2 {
+    margin-bottom: $spaceHuge;
+
+    @include medium_and_up() {
+      font-size: $fontHuge;
+    }
+  }
+
+  p {
+    margin: $spaceNormal 0;
+    line-height: 1.5em;
+  }
+}
+
+.input-container {
+  margin: 0 0 $spaceHuge;
+  width: 100%;
+  label {
+    display: inline-block;
+    margin-bottom: $spaceTiny;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: $spaceSmall;
+    font-size: $fontLarge;
+    border-radius: 2px;
+
+    &[type="radio"] {
+      width: $fontNormal;
+      display: inline-block;
+      margin-left: $spaceNormal;
+
+      & + label {
+        cursor: pointer;
+        font-size: $fontLarge;
+        margin-right: $spaceNormal;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  textarea {
+    height:4rem;
+    font-size: $fontNormal;
+  }
+}
+
+button {
+  padding: $spaceNormal $spaceSmall;
+  color: $white;
+  background: $blue;
+  font-size: $fontLarge;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 20rem;
+  transition: all $buttonTransitionTiming ease-out;
+  box-shadow: 0 0 6px -2px $black;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: $lt-blue;
+    box-shadow: 0 0 6px 0 $black;
+  }
+
+  &[disabled='true'] {
+    background-color: $grey3;
+    color: $grey5;
+    cursor: not-allowed;
+  }
+}
+
+a.link {
+  color: $lt-blue;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#story-container {
+  @include section-container();
+  @include heart-background($pattern3);
+
+  ol {
+    margin-left: $spaceNormal;
+    padding-left: $spaceLarge;
+    border-left: 3px solid $blue;
+
+    li {
+      margin-bottom: 4rem;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: -2.1rem;
+        content: '';
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: $lt-blue;
+      }
+
+      h4 {
+        font-size: $fontLarge;
+      }
+
+      p.quote {
+        display: inline-block;
+        padding: $spaceNormal 4rem $spaceNormal 3rem;
+        font-style:italic;
+        border-radius: 4px;
+        background: rgba(255,255,255,0.15);
+        font-size: $fontLarge;
+        position: relative;
+
+        &:before, &:after {
+          opacity: 0.15;
+          font-size: 8rem;
+          line-height: 8rem;
+          position: absolute;
+          top: 0;
+        }
+
+        &:before {
+          left: -1rem;
+          content: open-quote;
+        }
+        &:after {
+          right: $spaceLarge;
+          content: close-quote;
+        }
+
+      }
+    }
+
+    li#last-event {
+      padding: $spaceLarge 0;
+      &:before {
+        background-color: transparent;
+        border-radius: 0;
+        top: auto;
+        left: -2.15rem;
+        bottom: 0;
+        content: '';
+        border: solid $blue;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+#details-container {
+  @include section-container();
+  @include heart-background($pattern5);
+}
+
+#registry-container {
+  @include section-container();
+  @include heart-background($pattern4);
+
+  ul {
+    li {
+      line-height: 1.5rem;
+      strong {
+        display: inline-block;
+        margin-right: $spaceSmall;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+#rsvp-container {
+  @include section-container();
+  @include heart-background($pattern1);
+}
+
+@include medium_and_up() {
+  .inline-desktop {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      margin-left: $spaceNormal;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+}

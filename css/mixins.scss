@@ -1,0 +1,95 @@
+@import "variables";
+
+// --- AND UP
+
+@mixin extra_large_and_up {
+  @media screen and (min-width: $largeScreen) {
+    @content;
+  }
+}
+@mixin large_and_up {
+  @media screen and (min-width: $largeScreen) {
+    @content;
+  }
+}
+@mixin medium_and_up {
+  @media screen and (min-width: $mediumScreen) {
+    @content;
+  }
+}
+
+@mixin small_and_up {
+  @media screen and (min-width: $smallScreen) {
+    @content;
+  }
+}
+
+// --- ONLY
+
+@mixin small_only {
+  @media screen and (min-width: $smallScreen) and (max-width: $smallScreenLimit) {
+    @content;
+  }
+}
+
+@mixin medium_only {
+  @media screen and (min-width: $mediumScreen) and (max-width: $mediumScreenLimit) {
+    @content;
+  }
+}
+@mixin large_only {
+  @media screen and (min-width: $largeScreen) and (max-width: $largeScreenLimit) {
+    @content;
+  }
+}
+
+// --- AND DOWN
+
+@mixin extra_small_and_down {
+  @media screen and (max-width: $extraSmallScreenLimit) {
+    @content;
+  }
+}
+
+@mixin small_and_down {
+  @media screen and (max-width: $smallScreenLimit) {
+    @content;
+  }
+}
+
+@mixin medium_and_down {
+  @media screen and (max-width: $mediumScreenLimit) {
+    @content;
+  }
+}
+
+@mixin large_and_down {
+  @media screen and (max-width: $largeScreenLimit) {
+    @content;
+  }
+}
+
+// -- Styles
+
+@mixin clear_fix() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin fill_page() {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin hover_opacity($idleOpac: 0.5, $hoverOpac: 1, $timing: 0.3s ease-out) {
+  cursor: pointer;
+  opacity: $idleOpac;
+  transition: $timing;
+
+  &:hover {
+    opacity: $hoverOpac;
+  }
+}
