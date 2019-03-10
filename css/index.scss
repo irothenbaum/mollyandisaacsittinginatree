@@ -7,8 +7,8 @@
   border-bottom: 2px solid rgba(0,0,0,0.25);
 }
 
-@mixin heart-background($color) {
-  background: url('../img/heart.png') top left repeat $color;
+@mixin icon-background($color, $icon : 'heart') {
+  background: url('../img/#{$icon}.png') top left repeat $color;
 }
 
 * {
@@ -117,7 +117,7 @@ h2 {
 }
 
 #hero {
-  @include heart-background($grey5);
+  @include icon-background($grey5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,7 +190,7 @@ h2 {
 
 #title-container {
   @include section-container();
-  @include heart-background($pattern2);
+  @include icon-background($pattern2);
   text-align: center;
 }
 
@@ -316,7 +316,7 @@ a.link {
 
 #story-container {
   @include section-container();
-  @include heart-background($pattern3);
+  @include icon-background($pattern3);
 
   ol {
     margin-left: $spaceNormal;
@@ -391,12 +391,12 @@ a.link {
 
 #details-container {
   @include section-container();
-  @include heart-background($pattern5);
+  @include icon-background($pattern5, 'cheers');
 }
 
 #registry-container {
   @include section-container();
-  @include heart-background($pattern4);
+  @include icon-background($pattern4);
 
   ul {
     li {
@@ -412,7 +412,7 @@ a.link {
 
 #rsvp-container {
   @include section-container();
-  @include heart-background($pattern1);
+  @include icon-background($pattern1);
 }
 
 @include medium_and_up() {
