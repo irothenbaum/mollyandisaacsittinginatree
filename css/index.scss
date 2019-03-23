@@ -190,7 +190,7 @@ h2 {
 
 #title-container {
   @include section-container();
-  @include icon-background($pattern2);
+  @include icon-background($pattern2, 'wedding_bands');
   text-align: center;
 }
 
@@ -316,7 +316,7 @@ a.link {
 
 #story-container {
   @include section-container();
-  @include icon-background($pattern3);
+  @include icon-background($pattern3, 'heart');
 
   ol {
     margin-left: $spaceNormal;
@@ -396,7 +396,7 @@ a.link {
 
 #registry-container {
   @include section-container();
-  @include icon-background($pattern4);
+  @include icon-background($pattern4, 'gift');
 
   ul {
     li {
@@ -412,7 +412,7 @@ a.link {
 
 #rsvp-container {
   @include section-container();
-  @include icon-background($pattern1);
+  @include icon-background($pattern1, 'ring');
 }
 
 @include medium_and_up() {

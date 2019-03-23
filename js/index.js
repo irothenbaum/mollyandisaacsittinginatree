@@ -26,12 +26,14 @@
     var $featuredImagePrevious;
     var $nav;
     var galleryInterval;
+    var G_DATA;
 
     $(document).ready(function() {
         $hero = $('#hero');
         $window = $(window);
         $header = $('header');
 
+        d();
         hookupAttendingInteraction();
         hookupFormSubmission();
 
@@ -146,9 +148,9 @@
             $button.attr('disabled', "true")
 
             var data = $form.serializeObject()
-            data.total = data.total || 0;
+            data.timestamp = Date.now()
 
-            if (!data || !data.name || !data.email || !data.attending || data.attending ==='yes' && !data.total) {
+            if (!data || !data.name || !data.email || !data.attending) {
                 $errorMessage.show();
                 $button.removeAttr('disabled')
                 return;
@@ -166,7 +168,26 @@
         })
     }
 
-
+    function d() {
+        $.get("./encoded.txt", function(data) {
+            var characterset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.'{}[],()"
+            var decoded = atob(data)
+            let output = ''
+            for(let i=0; i<decoded.length; i+=2) {
+                let substr = decoded.substr(i, 2)
+                let index = parseInt(substr)
+                let char
+                if (isNaN(index)) {
+                    char = substr[1]
+                } else {
+                    char= characterset[index]
+                }
+                output += char
+            }
+            G_DATA = JSON.parse(output + '\n')
+            console.log(G_DATA)
+        })
+    }
 
 
 

@@ -98,26 +98,16 @@
     <div id="rsvp-container">
         <section>
             <h2>RSVP</h2>
-            <form id="rsvp-form">
-                <div class="inline-desktop">
-                    <div class="input-container">
-                        <label>Your name</label>
-                        <input type="text" name="name" placeholder="First and Last Name">
-                    </div>
-                    <div class="input-container">
-                        <label>Email address</label>
-                        <input type="text" name="email" placeholder="Email you received invitation to">
-                    </div>
+
+            <form id="enter-email-form">
+                <p>Please enter the email address you received your invite too</p>
+                <div class="input-container">
+                    <label>Email address</label>
+                    <input type="text" placeholder="johndoe@example.com">
                 </div>
-                <div class="input-container" id="attending-input-container">
-                    <label>Will you be joining us?</label>
-                    <input type="radio" id="statusYes" name="attending" value="yes"><label for="statusYes">Yes</label>
-                    <input type="radio" id="statusNo" name="attending" value="no"><label for="statusNo">No</label>
-                    <div class="input-container">
-                        <label>Including yourself, how many are you RSVPing for?</label>
-                        <input type="number" step="1" value="1" name="total">
-                    </div>
-                </div>
+            </form>
+            <form id="rsvp-form" style="display:none">
+                <div class="invitee-list"></div>
                 <div class="input-container">
                     <label>Questions? Comments?</label>
                     <textarea name="comments" placeholder="Anything we forgot to mention? Got a burning question? Just want to say hi? Let us know!"></textarea>
@@ -172,5 +162,23 @@
             </ul>
         </section>
     </div>
+
+    <script id="guest-template" type="text/html">
+        <div class="inline-desktop">
+            <div class="input-container">
+                <label>Your name</label>
+                <input type="text" name="name" placeholder="First and Last Name">
+            </div>
+            <div class="input-container">
+                <label>Email address</label>
+                <input type="text" name="email" placeholder="Email you received invitation to">
+            </div>
+        </div>
+        <div class="input-container" id="attending-input-container">
+            <label>Will you be joining us?</label>
+            <input type="radio" id="statusYes" name="attending" value="yes"><label for="statusYes">Yes</label>
+            <input type="radio" id="statusNo" name="attending" value="no"><label for="statusNo">No</label>
+        </div>
+    </script>
 </body>
 </html>
