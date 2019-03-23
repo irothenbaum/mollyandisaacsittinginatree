@@ -91,6 +91,86 @@
     <div id="details-container">
         <section>
             <h2>Wedding Details</h2>
+            <p>
+                We’re so excited to share this day with you! Please see details below:
+            </p>
+
+            <ul>
+                <li class="with-extra-details">
+                    <strong>Ceremony:</strong>
+                    <div>
+                        TBD (please check back here for updates!)
+                    </div>
+                </li>
+                <li class="with-extra-details">
+                    <strong>Reception:</strong>
+                    <div>
+                        6:00 PM to 10:00 PM<br />
+                        @ <a class="link" href="https://yardsbrewing.com/">Yards Brewing Company</a><br />
+                        <a class="link" href="https://goo.gl/maps/WKFgw2Z1dum">500 Spring Garden St, Philadelphia, PA 19123</a><br />
+                        <br />
+                        Please <a href="#rsvp">let us know</a> if you can attend by <strong>July 19, 2019</strong>.
+                    </div>
+                </li>
+                <li class="with-extra-details">
+                    <strong>Details:</strong>
+                    <div>
+                        Cocktails, hors d'oeuvres, dinner and dancing! 💃
+                    </div>
+                </li>
+                <li class="with-extra-details">
+                    <strong>Accommodations:</strong>
+                    <div id="accommodations-container">
+                        <p style="margin-top: 0;">
+                            Rather than going with one large block, we chose a few different accommodations for you to choose from.
+                            If you'd like to stay in one of our blocks, please complete your reservations before September 19th.
+                        </p>
+
+                        <ul>
+                            <li>
+                                <a class="link" target="_blank" href="https://www.marriott.com/events/start.mi?id=1551203686231&key=GRP">
+                                    Le M&eacute;ridien Philadelphia
+                                </a>
+                                <div>
+                                    Book via <a class="link" target="_blank" href="https://www.marriott.com/events/start.mi?id=1551203686231&key=GRP">this link</a>.
+                                </div>
+                            </li>
+                            <li>
+                                <a class="link" target="_blank" href="https://www.marriott.com/hotels/travel/phldc-courtyard-philadelphia-downtown/">
+                                    Courtyard Philadelphia
+                                </a>
+                                <div>
+                                    Call Marriott Reservations at 1(800) 321-2211 or (215) 496-3200
+                                    and say you're part of the "Isaac Rothenbaum" group
+                                    staying at the Courtyard Philadelphia Downtown
+                                </div>
+                            </li>
+                            <li>
+                                <a class="link" target="_blank" href="https://www.guestreservations.com/holiday-inn-express-philadelphia-midtown/booking">Holiday Inn Midtown</a>
+                                <div>
+                                    Call <a class="link" href="tel:+18887525341">888-752-5341</a>
+                                    and say you're with "Rothenbaum Wedding" or use the block code "RTH"
+                                </div>
+                            </li>
+                            <li>
+                                <a class="link" target="_blank" href="https://www.ihg.com/holidayinnexpress/hotels/us/en/philadelphia/phlpl/hoteldetail">Holiday Inn Penns Landing</a>
+                                <div>
+                                    Call <a class="link" href="tel:+18008432355">1-800-843-2355</a> and ask for the
+                                    "Phelan-Rothenbaum Wedding" or use code "PHE"
+                                </div>
+                            </li>
+                            <li>
+                                <a class="link" target="_blank" href="https://www.wyndhamhotels.com/days-inn/philadelphia-pennsylvania/days-inn-philadelphia-convention-center/overview?CID=LC:DI:20160927:RIO:Local:SM-dimatl">Days Inn</a>
+                                <div>
+                                    Call <a class="link" href="tel:+18773612506">877-361-2506</a>
+                                    and reference reservation #5136B96068981
+                                    or use block name "Rothenbaum/Phelan Wedding"
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </section>
     </div>
 
@@ -99,23 +179,39 @@
         <section>
             <h2>RSVP</h2>
 
-            <form id="enter-email-form">
+            <div id="enter-email-form">
                 <p>Please enter the email address you received your invite too</p>
                 <div class="input-container">
                     <label>Email address</label>
-                    <input type="text" placeholder="johndoe@example.com">
+                    <input id="email-input" type="text" placeholder="johndoe@example.com">
                 </div>
-            </form>
-            <form id="rsvp-form" style="display:none">
+                <div id="lookup-error" style="display: none">
+                    <h2>Uh oh!</h2>
+                    <p>
+                        We can't find your invite.
+                        Make sure you enter the email address you received the invitation to.
+                        <br>
+                        If you're sure you're doing everything correctly, now worries!
+                        Just <a class="link" href="tel:+17082207614">give us a call</a>
+                        or <a class="link" href="mailto:irothenbaum@gmail.com">send us an email</a>
+                        to RSVP.
+                    </p>
+                </div>
+                <button id="lookup-email-button">
+                    RSVP
+                </button>
+            </div>
+            <div id="rsvp-form" style="display:none">
                 <div class="invitee-list"></div>
                 <div class="input-container">
+                    <label>Mailing address️</label>
+                    <textarea id="address-input" placeholder=""></textarea>
+                </div>
+                <div class="input-container">
                     <label>Questions? Comments?</label>
-                    <textarea name="comments" placeholder="Anything we forgot to mention? Got a burning question? Just want to say hi? Let us know!"></textarea>
+                    <textarea id="comments-input" placeholder="Anything we forgot to mention? Got a burning question? Just want to say hi? Let us know!"></textarea>
                 </div>
                 <div style="text-align: center;">
-                    <div id="rsvp-message-confirm" style="display:none;">
-                        ✔ We've received your RSVP. Thanks!
-                    </div>
                     <div id="rsvp-message-error" style="display:none;">
                         Please make sure you've completed all required fields to RSVP
                     </div>
@@ -123,7 +219,11 @@
                         RSVP
                     </button>
                 </div>
-            </form>
+            </div>
+            <div id="rsvp-message-confirm" style="display:none;">
+                <h2>✔ Got it</h2>
+                We've received your RSVP. Thanks!
+            </div>
         </sectioN>
     </div>
 
@@ -152,7 +252,7 @@
                     <strong>Paypal:</strong>
                     <a class="link" target="_blank" href="https://paypal.me/irothenbaum?locale.x=en_US">isaac@rothenbaum.com</a>
                 </li>
-                <li style="display:flex; align-items: flex-start; justify-content: flex-start;">
+                <li class="with-extra-details">
                     <strong>Home Address:</strong>
                     <div>
                         294 Broome Street, apt #3A<br>
@@ -164,20 +264,28 @@
     </div>
 
     <script id="guest-template" type="text/html">
-        <div class="inline-desktop">
+        <div class="guest-invite-container">
             <div class="input-container">
-                <label>Your name</label>
+                <label>Guest name</label>
                 <input type="text" name="name" placeholder="First and Last Name">
             </div>
             <div class="input-container">
-                <label>Email address</label>
-                <input type="text" name="email" placeholder="Email you received invitation to">
+                <label>Attending?</label>
+                <div class="attending-inputs-container">
+                    <span>
+                        <label>
+                            <input type="radio" class="yes" name="" value="1" />
+                            Yes
+                        </label>
+                    </span>
+                    <span>
+                        <label>
+                            <input type="radio" class="no" name="" value="0" />
+                            No
+                        </label>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="input-container" id="attending-input-container">
-            <label>Will you be joining us?</label>
-            <input type="radio" id="statusYes" name="attending" value="yes"><label for="statusYes">Yes</label>
-            <input type="radio" id="statusNo" name="attending" value="no"><label for="statusNo">No</label>
         </div>
     </script>
 </body>

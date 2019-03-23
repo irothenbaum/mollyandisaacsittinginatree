@@ -1,6 +1,6 @@
 /**
  * Run this file on the output for the get_rsvp_data.sql
- * and it will convert it into a javascript w/ padding file
+ * and it will convert it into a text file with data properly encoded for use on the front end
  */
 const fs = require('fs')
 const data = require('./rsvp_data.json')

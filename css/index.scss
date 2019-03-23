@@ -2,6 +2,8 @@
 @import "./mixins";
 @import "./reset";
 
+$errorBG : rgba(13,186,203,0.3);
+
 @mixin section-container() {
   border-top: 2px solid rgba(255,255,255,0.25);
   border-bottom: 2px solid rgba(0,0,0,0.25);
@@ -83,7 +85,12 @@ header {
   }
 
   div {
-    width: 50%;
+    @include medium_and_down() {
+      width: 80%;
+    }
+    @include large_and_up() {
+      width: 50%;
+    }
     min-width: 20rem;
     padding-right: $spaceHuge;
 
@@ -194,40 +201,6 @@ h2 {
   text-align: center;
 }
 
-#rsvp-message-confirm, #rsvp-message-error {
-  padding: $spaceNormal;
-  text-align: center;
-  border-radius: 4px;
-  font-size: $fontLarge;
-  color: $white;
-  background: $blue;
-  box-shadow: 0 0 6px -2px $black;
-}
-
-#rsvp-message-error {
-  background: $red;
-  margin-bottom: $spaceNormal;
-}
-
-#attending-input-container {
-  .input-container {
-    margin-top: $spaceNormal;
-    display: none;
-
-    input {
-      width: 4rem;
-      display: inline-block;
-    }
-  }
-
-  &.is-attending {
-    .input-container {
-      display: block;
-    }
-  }
-}
-
-
 section {
   max-width: $largeScreen;
   padding: $spaceNormal;
@@ -279,6 +252,73 @@ section {
     height:4rem;
     font-size: $fontNormal;
   }
+
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    .slider:after {
+      content: 'No';
+      display: inline-block;
+      margin-left: 4.5rem;
+      line-height: 2rem;
+      font-size: $fontLarge;
+    }
+
+    input:checked + .slider {
+      background-color: $blue;
+
+      &:after {
+        content: 'Yes';
+      }
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px $blue;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  }
 }
 
 button {
@@ -299,10 +339,16 @@ button {
     box-shadow: 0 0 6px 0 $black;
   }
 
-  &[disabled='true'] {
+  &[disabled] {
     background-color: $grey3;
     color: $grey5;
     cursor: not-allowed;
+
+    &:after {
+      content: 'sending...';
+      display: inline-block;
+      margin-left: $spaceNormal;
+    }
   }
 }
 
@@ -311,6 +357,23 @@ a.link {
   cursor: pointer;
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.with-extra-details {
+  display:flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+ul {
+  li {
+    line-height: 1.5rem;
+    strong {
+      display: inline-block;
+      margin-right: $spaceSmall;
+      font-weight: bold;
+    }
   }
 }
 
@@ -389,30 +452,83 @@ a.link {
   }
 }
 
+#lookup-error, #rsvp-message-error, #rsvp-message-confirm {
+  padding: $spaceNormal;
+  margin:$spaceNormal $spaceNormal $spaceLarge $spaceNormal;
+  background: $errorBG;
+  border-radius: 8px;
+
+  h2 {
+    margin-bottom: $spaceNormal;
+  }
+}
+
+#email-input, #address-input, #comments-input {
+  max-width: 30rem;
+  display: block;
+
+}
+
 #details-container {
   @include section-container();
   @include icon-background($pattern5, 'cheers');
-}
 
-#registry-container {
-  @include section-container();
-  @include icon-background($pattern4, 'gift');
+  li {
+    margin-top: $spaceLarge;
 
-  ul {
-    li {
-      line-height: 1.5rem;
-      strong {
-        display: inline-block;
-        margin-right: $spaceSmall;
-        font-weight: bold;
+    #accommodations-container {
+      li {
+        margin-bottom: $spaceHuge;
+        & > a {
+          display: block;
+        }
       }
     }
   }
 }
 
+#registry-container {
+  @include section-container();
+  @include icon-background($pattern4, 'gift');
+}
+
 #rsvp-container {
   @include section-container();
   @include icon-background($pattern1, 'ring');
+
+  .guest-invite-container {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      margin-left: $spaceNormal;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .attending-inputs-container {
+      margin-top: 0.65rem;
+
+      span {
+        display: inline-block;
+        margin-right: 1rem;
+      }
+
+      label {
+        font-size: $fontLarge;
+        cursor: pointer;
+      }
+
+      input {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin:0;
+        vertical-align: -0.25rem;
+      }
+    }
+  }
 }
 
 @include medium_and_up() {

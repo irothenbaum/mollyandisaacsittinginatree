@@ -16,6 +16,8 @@
         './img/train_blooper.jpg',
         './img/jetski.jpg',
     ];
+    var POST_URL = 'https://script.google.com/macros/s/AKfycbyRh1LZIDxPVyosrki7B8P3uREeLKlyYs0HhlDLLFKbqZILyYY/exec'
+    var PLUS_ONE = 'PLUS ONE'
 
     var $window;
     var $header;
@@ -35,7 +37,6 @@
 
         d();
         hookupAttendingInteraction();
-        hookupFormSubmission();
 
         sizeHero();
         startGallery();
@@ -122,24 +123,35 @@
     }
 
     function hookupAttendingInteraction() {
-        var $attendingInputContainer = $('#attending-input-container');
-        var $yesAttendingInput = $('#statusYes');
-        $attendingInputContainer.find('input').click(function() {
-            setTimeout(function() {
-                if ($yesAttendingInput.is(':checked')) {
-                    $attendingInputContainer.addClass("is-attending")
-                } else {
-                    $attendingInputContainer.removeClass("is-attending")
-                }
-            },100);
+        $('#lookup-email-button').click(function() {
+            var email = $('#email-input').val().toLowerCase()
+            if (!G_DATA[email]) {
+                $('#lookup-error').show()
+            } else {
+                initFormFromEmail(email);
+            }
         })
     }
 
-    function hookupFormSubmission() {
-        var $form = $('form#rsvp-form');
+    function initFormFromEmail(email) {
+        $('#enter-email-form').hide()
+        var $form = $('#rsvp-form');
+        $form.show()
         var $button = $('#submit-form');
         var $errorMessage = $('#rsvp-message-error');
-        var url = 'https://script.google.com/macros/s/AKfycbyRh1LZIDxPVyosrki7B8P3uREeLKlyYs0HhlDLLFKbqZILyYY/exec'
+
+        var guests = G_DATA[email]
+
+        var tree = $('.invitee-list')
+        var containerText = $('#guest-template').html()
+        tree.empty()
+
+        for (var i=0; i<guests.length; i++) {
+            var newGuest = $(containerText)
+            newGuest.find('input[type=text]').val(guests[i] === PLUS_ONE ? (guests[0] + ' Guest') : guests[i])
+            newGuest.find('input.yes, input.no').attr('name', guests[i].toLowerCase().replace(' ', '_') + '_attending')
+            tree.append(newGuest)
+        }
 
         $button.on('click', function(e) {
             e.preventDefault();
@@ -147,36 +159,74 @@
             $errorMessage.hide();
             $button.attr('disabled', "true")
 
-            var data = $form.serializeObject()
-            data.timestamp = Date.now()
+            var data = []
 
-            if (!data || !data.name || !data.email || !data.attending) {
+            // TODO load the data object from the input fields
+            tree.children().each(function(index, elem) {
+                var $elem = $(elem)
+                var guestData = {}
+                guestData.email = email
+                guestData.name = $elem.find("input[type=text]").val()
+                guestData.attending = parseInt($elem.find("input[type=radio]:checked").val())
+                guestData.address = $('#address-input').val()
+                guestData.comments = $('#comments-input').val()
+                guestData.timestamp = new Date()
+
+                data.push(guestData)
+            })
+
+            if (!isDataComplete(data)) {
                 $errorMessage.show();
-                $button.removeAttr('disabled')
+                $button.removeAttr('disabled');
                 return;
             }
 
-            $.ajax({
-                url: url,
-                method: "GET",
-                dataType: "json",
-                data: data
-            }).then(function() {
-                $button.hide();
+            var promises = []
+            for(var j=0; j<data.length; j++) {
+                promises.push($.ajax({
+                    url: POST_URL,
+                    method: "GET",
+                    dataType: "json",
+                    data: data[j]
+                }));
+            }
+
+            Promise.all(promises).then(function() {
+                $button.removeAttr('disabled').hide();
                 $('#rsvp-message-confirm').show()
+                $form.hide();
+            }).catch(function(err) {
+                console.error(err)
+                alert("We might not have gotten your RSVP. To be safe, please try again!")
             });
         })
+    }
+
+    function isDataComplete(data) {
+        if (!data.length) {
+            return false;
+        }
+        for (var i=0; i<data.length; i++) {
+            var d = data[i]
+
+            if (!(
+                d && d.name && d.email && d.address && !isNaN(d.attending)
+            )){
+                return false
+            }
+        }
+        return true
     }
 
     function d() {
         $.get("./encoded.txt", function(data) {
             var characterset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.'{}[],()"
             var decoded = atob(data)
-            let output = ''
-            for(let i=0; i<decoded.length; i+=2) {
-                let substr = decoded.substr(i, 2)
-                let index = parseInt(substr)
-                let char
+            var output = ''
+            for(var i=0; i<decoded.length; i+=2) {
+                var substr = decoded.substr(i, 2)
+                var index = parseInt(substr)
+                var char
                 if (isNaN(index)) {
                     char = substr[1]
                 } else {
@@ -185,28 +235,6 @@
                 output += char
             }
             G_DATA = JSON.parse(output + '\n')
-            console.log(G_DATA)
         })
     }
-
-
-
-
-
-    $.fn.serializeObject = function()
-    {
-        var o = {};
-        var a = this.serializeArray();
-        $.each(a, function() {
-            if (o[this.name]) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-        return o;
-    };
 })(jQuery, window)
