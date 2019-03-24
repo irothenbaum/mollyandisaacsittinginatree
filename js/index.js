@@ -137,7 +137,7 @@
 
     function hookupAttendingInteraction() {
         $('#lookup-email-button').click(function() {
-            var email = $('#email-input').val().toLowerCase()
+            var email = $('#email-input').val().toLowerCase().trim()
             if (!G_DATA[email]) {
                 $('#lookup-error').show()
             } else {
