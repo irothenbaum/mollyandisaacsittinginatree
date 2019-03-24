@@ -84,7 +84,7 @@ header {
     }
   }
 
-  div {
+  #nav-container {
     @include medium_and_down() {
       width: 80%;
     }
@@ -98,6 +98,58 @@ header {
     align-items: center;
     justify-content: space-between;
     float: right;
+  }
+}
+
+#hamburger {
+  display: none;
+}
+
+@include small_and_down() {
+  a#logo {
+    background-color: transparent !important;
+    &:after {
+      display: none;
+    }
+  }
+  #hamburger {
+    display: block;
+    position: fixed;
+    top: $spaceNormal;
+    right: $spaceNormal;
+    z-index: 10;
+    background-image:url(../img/burgertown.png);
+    background-size: contain;
+    height: $spaceNormal;
+    width: $spaceNormal;
+    cursor: pointer;
+  }
+
+  #nav-container-outer {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/wedding_bands.png) top left $beige;
+    text-align: center;
+
+    #nav-container {
+      margin-top: 6rem;
+      display: block;
+    }
+
+    a {
+      display: block;
+      height: $spaceHuge;
+      margin-top: $spaceNormal;
+      background-color: transparent !important;
+    }
+
+    &.opened {
+      display: block;
+    }
   }
 }
 
@@ -209,8 +261,9 @@ section {
   h2 {
     margin-bottom: $spaceHuge;
 
-    @include medium_and_up() {
-      font-size: $fontHuge;
+    font-size: $fontHuge;
+    @include small_and_down() {
+      font-size: 2.5rem;
     }
   }
 

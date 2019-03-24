@@ -37,11 +37,24 @@
 
         d();
         hookupAttendingInteraction();
+        initHamburger()
 
         sizeHero();
         startGallery();
         $window.on('resize', sizeHero);
     })
+
+    function initHamburger() {
+        var $hamburger = $('#hamburger');
+        var $navContainer = $('#nav-container-outer')
+        $hamburger.click(function() {
+            $navContainer.toggleClass('opened')
+        })
+
+        $navContainer.find('a').click(function() {
+            $navContainer.removeClass('opened')
+        })
+    }
 
 
     function sizeHero() {
