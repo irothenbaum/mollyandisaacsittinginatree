@@ -204,13 +204,23 @@
                 }));
             }
 
-            Promise.all(promises).then(function() {
-                $button.removeAttr('disabled').hide();
-                $('#rsvp-message-confirm').show()
-                $form.hide();
+            Promise.all(promises).then(function(results) {
+                var allGood = true
+                results.forEach(function(r) {
+                    allGood = allGood && r.result === 'success'
+                })
+
+                if (!allGood) {
+                    alert("We might not have gotten your RSVP. To be safe, please refresh and try again!")
+                } else {
+                    $button.removeAttr('disabled').hide();
+                    $('#rsvp-message-confirm').show()
+                    $form.hide();
+                }
+
             }).catch(function(err) {
                 console.error(err)
-                alert("We might not have gotten your RSVP. To be safe, please try again!")
+                alert("We might not have gotten your RSVP. To be safe, please refresh and try again!")
             });
         })
     }
