@@ -267,6 +267,13 @@ section {
     }
   }
 
+  h3 {
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: $spaceHuge;
+    margin-top: $spaceHuge;
+    font-size:2rem;
+  }
+
   p {
     margin: $spaceNormal 0;
     line-height: 1.5em;

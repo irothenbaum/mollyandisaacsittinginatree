@@ -2,3 +2,4 @@
 ORIGINALS/
 *.csv
 *.json
+.sass-cache/
