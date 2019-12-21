@@ -495,6 +495,49 @@ ul li {
         margin: 0;
         vertical-align: -0.25rem; }
 
+#pics-container {
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  background: url("../img/gallery.png") top left repeat #5d415b; }
+  #pics-container #picture-gallery {
+    font-size: 0; }
+    #pics-container #picture-gallery .picture {
+      width: 23%;
+      display: inline-block;
+      margin: 1%;
+      cursor: pointer;
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: 0 0 3px 0 #000;
+      position: relative;
+      top: 0;
+      transition: all 0.2s ease-out; }
+      #pics-container #picture-gallery .picture:hover {
+        top: -4px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5); }
+      #pics-container #picture-gallery .picture .picture-inner {
+        margin: 5%;
+        padding-top: 90%;
+        width: 90%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center; }
+      @media screen and (max-width: 639px) {
+        #pics-container #picture-gallery .picture {
+          width: 48%; } }
+
+#see-all-pics-message {
+  font-size: 1.5rem;
+  margin-top: 1.5rem; }
+
+#category-select {
+  display: inline-block;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer; }
+
 @media screen and (min-width: 640px) {
   .inline-desktop {
     display: flex;

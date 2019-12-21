@@ -20,6 +20,19 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="./js/index.js"></script>
+
+    <script type="text/javascript">
+        window.__GALLERY_ITEMS = [
+            "/reception/622_0804.jpg",
+            "/reception/622_0808.jpg",
+            "/reception/622_0844.jpg",
+            "/reception/622_0831.jpg",
+            "/reception/622_0854.jpg",
+            "/reception/622_0856.jpg"
+        ]
+    </script>
+
+    <script type="text/javascript" src="./js/picture_gallery.js"></script>
 </head>
 <body>
     <header>
@@ -29,9 +42,10 @@
         <div id="hamburger"></div>
         <div id="nav-container-outer">
             <div id="nav-container">
+                <a href="#pics">Wedding Pics</a>
                 <a href="#story">Our Story</a>
                 <a href="#details">Wedding Details</a>
-                <a href="#rsvp">RSVP</a>
+                <!--<a href="#rsvp">RSVP</a>-->
                 <a href="#registry">Registry</a>
             </div>
         </div>
@@ -46,7 +60,24 @@
         </section>
     </div>
 
-    <a name="story"></a>
+    <a id="pics"></a>
+    <div id="pics-container">
+        <section>
+            <h2>Wedding Pics &amp; Videos</h2>
+            <p>
+                Thanks to everyone who celebrated with us! Your presence helped to make it the special, unforgettable day that it was.
+                Check out some of our favorite pictures and videos from the ceremony, reception, and beyond.
+            </p>
+
+            <div id="picture-gallery">
+            </div>
+            <div id="see-all-pics-message">
+                <a class="link" href="./pics.html">Click here</a> to see all the pictures!
+            </div>
+        </section>
+    </div>
+
+    <a id="story"></a>
     <div id="story-container">
         <section>
             <h2>Our Story</h2>
@@ -98,7 +129,7 @@
         </section>
     </div>
 
-    <a name="details"></a>
+    <a id="details"></a>
     <div id="details-container">
         <section>
             <h2>Wedding Details</h2>
@@ -247,8 +278,8 @@
             </ul>
         </section>
     </div>
-
-    <a name="rsvp"></a>
+<!--
+    <a id="rsvp"></a>
     <div id="rsvp-container">
         <section>
             <h2>RSVP</h2>
@@ -300,8 +331,8 @@
             </div>
         </sectioN>
     </div>
-
-    <a name="registry"></a>
+-->
+    <a id="registry"></a>
     <div id="registry-container">
         <section>
             <h2>Registry</h2>

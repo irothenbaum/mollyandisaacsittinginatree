@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>K I S S I N G</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Parisienne" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/picture_gallery.js"></script>
+</head>
+<body>
+    <header>
+        <a id="logo" href="./">
+            <span>M</span><sub>&</sub><span>I</span>
+        </a>
+        <div id="hamburger"></div>
+        <div id="nav-container-outer">
+            <div id="nav-container">
+                <a href="./#pics">Wedding Pics</a>
+                <a href="./#story">Our Story</a>
+                <a href="./#details">Wedding Details</a>
+                <a href="./#registry">Registry</a>
+            </div>
+        </div>
+    </header>
+    <div id="pics-container">
+        <section>
+            <h2>Wedding Pics &amp; Videos</h2>
+            <p>
+                You can see all the pics below, or filter by category using this select box:
+                <select id="category-select">
+                    <option selected="selected" value="">All</option>
+                    <option value="preparations">Getting Ready</option>
+                    <option value="ceremony">Ceremony</option>
+                    <option value="church_portraits">Family Portraits</option>
+                    <option value="wedding_party">Wedding Party</option>
+                    <option value="reception">Reception</option>
+                    <option value="details">Misc</option>
+                    <option value="favorites">Photographer Favorites</option>
+                </select>
+            </p>
+
+            <div id="picture-gallery">
+            </div>
+        </section>
+    </div>
+</body>
+</html>

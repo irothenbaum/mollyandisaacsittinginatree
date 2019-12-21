@@ -591,6 +591,60 @@ ul {
   }
 }
 
+#pics-container {
+  @include section-container();
+  @include icon-background($pattern6, 'gallery');
+
+  #picture-gallery {
+    font-size: 0;
+
+    .picture {
+      width: 23%;
+      display: inline-block;
+      margin: 1%;
+      cursor: pointer;
+      border-radius: 4px;
+      background-color: $white;
+      box-shadow: 0 0 3px 0 $black;
+      position: relative;
+      top: 0;
+      transition: all 0.2s ease-out;
+
+      &:hover {
+        top: -4px;
+        box-shadow: 0 8px 8px  rgba(0,0,0,0.5);
+      }
+
+      .picture-inner {
+        margin: 5%;
+        padding-top: 90%;
+        width: 90%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      @include small_and_down() {
+        width: 48%;
+      }
+    }
+  }
+}
+
+#see-all-pics-message {
+  font-size: $fontLarge;
+  margin-top: $spaceLarge;
+}
+
+#category-select {
+  display: inline-block;
+  margin-left: $spaceNormal;
+  padding: $spaceSmall;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 @include medium_and_up() {
   .inline-desktop {
     display: flex;
