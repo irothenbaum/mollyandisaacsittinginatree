@@ -249,7 +249,7 @@ h2 {
 #title-container {
   border-top: 2px solid rgba(255, 255, 255, 0.25);
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-  background: url("../img/wedding_bands.png") top left repeat #495d41;
+  background: url("../img/wedding_bands.png") top left repeat #5d415b;
   text-align: center; }
 
 section {
@@ -498,7 +498,7 @@ ul li {
 #pics-container {
   border-top: 2px solid rgba(255, 255, 255, 0.25);
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-  background: url("../img/gallery.png") top left repeat #5d415b; }
+  background: url("../img/gallery.png") top left repeat #2b4c3c; }
   #pics-container #picture-gallery {
     font-size: 0; }
     #pics-container #picture-gallery .picture {

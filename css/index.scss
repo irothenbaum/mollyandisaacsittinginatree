@@ -593,7 +593,7 @@ ul {
 
 #pics-container {
   @include section-container();
-  @include icon-background($pattern6, 'gallery');
+  @include icon-background($pattern7, 'gallery');
 
   #picture-gallery {
     font-size: 0;
