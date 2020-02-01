@@ -13,7 +13,7 @@
     <link rel="manifest" href="./site.webmanifest">
     <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#2b4c3c">
 
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -29,7 +29,7 @@
         <div id="hamburger"></div>
         <div id="nav-container-outer">
             <div id="nav-container">
-                <a href="./#pics">Wedding Pics</a>
+                <a href="./#pics">Pics &amp; Vids</a>
                 <a href="./#story">Our Story</a>
                 <a href="./#details">Wedding Details</a>
                 <a href="./#registry">Registry</a>
@@ -38,7 +38,11 @@
     </header>
     <div id="pics-container">
         <section>
-            <h2>Wedding Pics &amp; Videos</h2>
+            <h2>Wedding Pictures &amp; Videos</h2>
+            <h3>Videos</h3>
+            <div id="video-gallery"></div>
+
+            <h3>Pictures</h3>
             <p>
                 You can see all the pics below, or filter by category using this select box:
                 <select id="category-select">
@@ -52,9 +56,7 @@
                     <option value="favorites">Photographer Favorites</option>
                 </select>
             </p>
-
-            <div id="picture-gallery">
-            </div>
+            <div id="picture-gallery"></div>
         </section>
     </div>
 </body>

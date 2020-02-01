@@ -499,9 +499,9 @@ ul li {
   border-top: 2px solid rgba(255, 255, 255, 0.25);
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
   background: url("../img/gallery.png") top left repeat #2b4c3c; }
-  #pics-container #picture-gallery {
+  #pics-container #picture-gallery, #pics-container #video-gallery {
     font-size: 0; }
-    #pics-container #picture-gallery .picture {
+    #pics-container #picture-gallery .picture, #pics-container #video-gallery .picture {
       width: 23%;
       display: inline-block;
       margin: 1%;
@@ -512,18 +512,23 @@ ul li {
       position: relative;
       top: 0;
       transition: all 0.2s ease-out; }
-      #pics-container #picture-gallery .picture:hover {
+      #pics-container #picture-gallery .picture:hover, #pics-container #video-gallery .picture:hover {
         top: -4px;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5); }
-      #pics-container #picture-gallery .picture .picture-inner {
+      #pics-container #picture-gallery .picture .picture-inner, #pics-container #video-gallery .picture .picture-inner {
         margin: 5%;
         padding-top: 90%;
         width: 90%;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center; }
+      #pics-container #picture-gallery .picture h5, #pics-container #video-gallery .picture h5 {
+        text-align: center;
+        font-size: 1rem;
+        color: #000;
+        margin: 0.5rem auto; }
       @media screen and (max-width: 639px) {
-        #pics-container #picture-gallery .picture {
+        #pics-container #picture-gallery .picture, #pics-container #video-gallery .picture {
           width: 48%; } }
 
 #see-all-pics-message {

@@ -1,13 +1,25 @@
 (function($, window) {
     var baseUrl = "https://mollyandisaacsittinginatree.s3.us-east-1.amazonaws.com";
     var $container;
+    var $videoContainer;
     var $select;
     var PICTURE_CLASS = 'picture'
 
     var galleryItems = window.__GALLERY_ITEMS || getAllPictures()
+    var galleryVideos = [
+        "/videos/Best man speech.mp4",
+        "/videos/Ceremony.mp4",
+        "/videos/Father of the bride speech.mp4",
+        "/videos/Father of the groom speech.mp4",
+        "/videos/Maid of honor speech.mp4",
+        "/videos/Matron of honor speech.mp4",
+        "/videos/Pics and dances.mp4",
+        // "/videos/Reception unedited.mp4",
+    ]
 
     $(document).ready(function() {
         $container = $("#picture-gallery");
+        $videoContainer = $('#video-gallery');
         $select = $('#category-select');
         $select.on('change', function() {
             var filter = $select.val()
@@ -20,15 +32,34 @@
         })
 
         var toAppend = []
-        galleryItems.forEach(function(elem) {
-            toAppend.push(createElement(elem))
+        galleryItems.forEach(function(fileName) {
+            toAppend.push(createElement(fileName))
         });
         $container.append(toAppend)
+
+        if ($videoContainer) {
+            toAppend = []
+            galleryVideos.forEach(function(fileName) {
+                toAppend.push(createVideoElement(fileName))
+            });
+            $videoContainer.append(toAppend)
+        }
     })
 
-    function createElement(elem) {
-        var url = baseUrl + elem;
+    function createElement(fileName) {
+        var url = baseUrl + fileName;
         var $elem = getPictureElement(url)
+        $elem.click(function() {
+            window.open(url, '_blank');
+        });
+        return $elem;
+    }
+
+    function createVideoElement(fileName) {
+        // 8 is the number of characters in the directory path ("/videos/")
+        var title = fileName.substr(8, fileName.indexOf('.mp4') - 8)
+        var url = baseUrl + fileName.replace(/ /g, '+');
+        var $elem = getPictureElement(url.replace('.mp4', '.png'), title)
         $elem.click(function() {
             window.open(url, '_blank');
         });
@@ -72,15 +103,23 @@
         return [url.slice(0, match.index) + '/' + match[1] + '/thumb_' + match[2], match[1]]
     }
 
-    function getPictureElement(url) {
-        var thumbAndCategory = getThumb(url)
+    function getPictureElement(url, title) {
+        var isVideo = !!title
+        var thumbAndCategory = isVideo ? [url, 'videos'] : getThumb(url)
         var pictureInner = $('<div />')
             .addClass('picture-inner')
             .css('background-image', 'url(' + thumbAndCategory[0] + ')')
-        return $('<div />')
+
+        var container = $('<div />')
             .addClass(PICTURE_CLASS)
             .attr('data-category', thumbAndCategory[1])
             .append(pictureInner)
+
+        if (isVideo) {
+            container.append($('<h5 />').text(title))
+        }
+
+        return container
     }
 
 })(jQuery, window)
