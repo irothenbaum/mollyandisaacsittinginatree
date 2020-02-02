@@ -622,6 +622,21 @@ ul {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+
+        &[data-filepath="/favorites/622_0011.jpg"],
+        &[data-filepath="/favorites/622_0012.jpg"],
+        &[data-filepath="/favorites/622_0077.jpg"],
+        &[data-filepath="/preparations/622_0213.jpg"],
+        &[data-filepath="/preparations/622_0214.jpg"],
+        &[data-filepath="/wedding_party/622_0552.jpg"],
+        &[data-filepath="/wedding_party/622_0561.jpg"],
+        &[data-filepath="/wedding_party/622_0563.jpg"],
+        &[data-filepath="/reception/622_0931.jpg"],
+        &[data-filepath="/reception/622_0932.jpg"],
+        &[data-filepath="/reception/622_0965.jpg"]
+        {
+          background-position: top center;
+        }
       }
 
       h5 {
@@ -633,6 +648,36 @@ ul {
 
       @include small_and_down() {
         width: 48%;
+      }
+    }
+  }
+
+  #picture-gallery {
+    [data-category="videos"] {
+      &:after {
+        content: '';
+        background-image:url('../img/video_icon.png');
+        background-position: center center;
+        background-size: contain;
+        height: 2rem;
+        width: 2rem;
+        top: $spaceSmall;
+        right: $spaceSmall;
+        position: absolute;
+        opacity: 0.3;
+        z-index: 3;
+      }
+
+      &:before {
+        content: '';
+        height: 0;
+        width: 0;
+        border-top: 5rem solid $white;
+        border-left: 5rem solid transparent;
+        top: 0;
+        right: 0;
+        position: absolute;
+        z-index: 2;
       }
     }
   }

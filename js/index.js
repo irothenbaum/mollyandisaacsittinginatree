@@ -35,7 +35,8 @@
         $window = $(window);
         $header = $('header');
 
-        d();
+        // disabling since we can't rsvp anymore
+        // d();
         hookupAttendingInteraction();
         initHamburger()
 

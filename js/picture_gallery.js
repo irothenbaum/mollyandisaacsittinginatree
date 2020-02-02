@@ -7,6 +7,7 @@
 
     var galleryItems = window.__GALLERY_ITEMS || getAllPictures()
     var galleryVideos = [
+        "/videos/Highlight reel.mp4",
         "/videos/Ceremony.mp4",
         "/videos/Pics and dances.mp4",
         "/videos/Father of the bride speech.mp4",
@@ -48,7 +49,8 @@
 
     function createElement(fileName) {
         var url = baseUrl + fileName;
-        var $elem = getPictureElement(url)
+        // pictures don't need to replace, but I'm doing it anyway to hack a video into a group of pictures
+        var $elem = getPictureElement(fileName, url.replace('.mp4', '.png'))
         $elem.click(function() {
             window.open(url, '_blank');
         });
@@ -59,7 +61,7 @@
         // 8 is the number of characters in the directory path ("/videos/")
         var title = fileName.substr(8, fileName.indexOf('.mp4') - 8)
         var url = baseUrl + fileName.replace(/ /g, '+');
-        var $elem = getPictureElement(url.replace('.mp4', '.png'), title)
+        var $elem = getPictureElement(fileName, url.replace('.mp4', '.png'), title)
         $elem.click(function() {
             window.open(url, '_blank');
         });
@@ -103,11 +105,13 @@
         return [url.slice(0, match.index) + '/' + match[1] + '/thumb_' + match[2], match[1]]
     }
 
-    function getPictureElement(url, title) {
-        var isVideo = !!title
+    function getPictureElement(fileName, url, title) {
+        var hasTitle = !!title
+        var isVideo = url.indexOf('videos') > -1
         var thumbAndCategory = isVideo ? [url, 'videos'] : getThumb(url)
         var pictureInner = $('<div />')
             .addClass('picture-inner')
+            .attr('data-filepath', fileName)
             .css('background-image', 'url(' + thumbAndCategory[0] + ')')
 
         var container = $('<div />')
@@ -115,7 +119,7 @@
             .attr('data-category', thumbAndCategory[1])
             .append(pictureInner)
 
-        if (isVideo) {
+        if (hasTitle) {
             container.append($('<h5 />').text(title))
         }
 

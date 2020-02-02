@@ -522,6 +522,8 @@ ul li {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center; }
+        #pics-container #picture-gallery .picture .picture-inner[data-filepath="/favorites/622_0011.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/favorites/622_0012.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/favorites/622_0077.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/preparations/622_0213.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/preparations/622_0214.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/wedding_party/622_0552.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/wedding_party/622_0561.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/wedding_party/622_0563.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/reception/622_0931.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/reception/622_0932.jpg"], #pics-container #picture-gallery .picture .picture-inner[data-filepath="/reception/622_0965.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/favorites/622_0011.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/favorites/622_0012.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/favorites/622_0077.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/preparations/622_0213.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/preparations/622_0214.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/wedding_party/622_0552.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/wedding_party/622_0561.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/wedding_party/622_0563.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/reception/622_0931.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/reception/622_0932.jpg"], #pics-container #video-gallery .picture .picture-inner[data-filepath="/reception/622_0965.jpg"] {
+          background-position: top center; }
       #pics-container #picture-gallery .picture h5, #pics-container #video-gallery .picture h5 {
         text-align: center;
         font-size: 1rem;
@@ -530,6 +532,28 @@ ul li {
       @media screen and (max-width: 639px) {
         #pics-container #picture-gallery .picture, #pics-container #video-gallery .picture {
           width: 48%; } }
+  #pics-container #picture-gallery [data-category="videos"]:after {
+    content: '';
+    background-image: url("../img/video_icon.png");
+    background-position: center center;
+    background-size: contain;
+    height: 2rem;
+    width: 2rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    position: absolute;
+    opacity: 0.3;
+    z-index: 3; }
+  #pics-container #picture-gallery [data-category="videos"]:before {
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 5rem solid #fff;
+    border-left: 5rem solid transparent;
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2; }
 
 #see-all-pics-message {
   font-size: 1.5rem;
