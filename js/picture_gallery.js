@@ -7,13 +7,13 @@
 
     var galleryItems = window.__GALLERY_ITEMS || getAllPictures()
     var galleryVideos = [
-        "/videos/Best man speech.mp4",
         "/videos/Ceremony.mp4",
-        "/videos/Father of the bride speech.mp4",
-        "/videos/Father of the groom speech.mp4",
-        "/videos/Maid of honor speech.mp4",
-        "/videos/Matron of honor speech.mp4",
         "/videos/Pics and dances.mp4",
+        "/videos/Father of the bride speech.mp4",
+        "/videos/Matron of honor speech.mp4",
+        "/videos/Maid of honor speech.mp4",
+        "/videos/Best man speech.mp4",
+        "/videos/Father of the groom speech.mp4",
         "/videos/Reception unedited.mp4",
     ]
 
