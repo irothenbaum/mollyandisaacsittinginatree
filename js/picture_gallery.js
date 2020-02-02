@@ -14,7 +14,7 @@
         "/videos/Maid of honor speech.mp4",
         "/videos/Matron of honor speech.mp4",
         "/videos/Pics and dances.mp4",
-        // "/videos/Reception unedited.mp4",
+        "/videos/Reception unedited.mp4",
     ]
 
     $(document).ready(function() {
